@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Hasaki.Models.SanPham>
+
+@{
+    ViewBag.Title = "DanhSachSP";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    th {
+        background-color: lightgray;
+    }
+
+    a {
+        color: blue;
+    }
+
+        a:hover {
+            color: darkblue;
+        }
+
+    .product-image {
+        max-width: 50px;
+        max-height: 50px;
+    }
+</style>
+
+<h2>DanhSachSP</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "ThemSP", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Giá
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSanPham)
+                </td>
+                <td>
+                    <img src="@item.HinhAnh" alt="Product Image" class="product-image" />
+                </td>
+                <td>
+                    @string.Format("{0:N0} đ", item.Gia)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.SanPhamID }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.SanPhamID }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Xóa","Delete",new { id = item.SanPhamID },new { @class = "btn btn-danger btn-sm delete-btn" }
+                    )
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ForgotPass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ForgotPass", "LoginResgis"))
+{
+<div id="lg_login">
+    <div class="sub_login">
+        <div class="main_content_sub_login">
+            <h3 style="text-align: center">Nhập tài khoản email của bạn để nhận đường dẫn xác thực </h3>
+            <h2 style="color: red;">@ViewBag.ThongBao</h2>
+            <div class="block_more_login">
+                <form id="form-head-login" action="https://hasaki.vn/login" method="post" novalidate="novalidate">
+                    <input name="form_key" type="hidden" value="9lB2QzSyHmzVefcW">
+                    <div class="showMessageError"></div>
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="relative">
+                            <label for="email">Email:</label>
+                            @Html.TextBox("Email", null, new
+                            {
+                                @class = "form-control",
+                                @id =
+                           "email",
+                                required = "required"
+                            })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn_site_1">Gửi mail xác thực</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+}

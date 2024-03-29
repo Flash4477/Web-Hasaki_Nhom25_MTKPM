@@ -1,0 +1,61 @@
+﻿@if (Session["Name1"] != null)
+{
+    <div class="text_1_header">
+    </div>
+    <div class="text_1_header">
+        <a href="" class="txt_link_hasaki txt_header_right" rel="nofollow">
+            @Session["Name1"].ToString() <span class="icon_carret_down"></span>
+        </a>
+    </div>
+    <div class="sub_login sub_dalogin">
+        <div class="main_content_sub_login">
+            <span class="arrow_sub_login"><span class="icon_carret_down"></span></span>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/customer/account" rel="nofollow"><i aria-hidden="true" class="fa fa-file-text-o"></i> Tài khoản của bạn </a>
+            </div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/sales/order/history/" rel="nofollow"><i aria-hidden="true" class="fa fa-list-alt"></i> Quản lý đơn hàng </a>
+            </div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/wishlist/" rel="nofollow"><i aria-hidden="true" class="fa fa-heart-o"></i> Sản phẩm yêu thích</a>
+            </div>
+            <div class="item_da_login">
+                <a href="https://hasaki.vn/customer/address/index" rel="nofollow"><i aria-hidden="true" class="fa fa-map-marker"></i> Địa chỉ giao hàng</a>
+            </div>
+            <div class="item_da_login">
+                <a href="@Url.Action("Logout", "LoginResgis")" rel="nofollow"><i aria-hidden="true" class="fa fa-sign-out"></i> Thoát</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text_1_header">
+        <a href="#popup-login" id="btn-login" rel="nofollow" class="popup-login txt_header_right">
+            Đăng
+            nhập
+        </a> /
+        <a href="#popup-register" rel="nofollow" class="popup-register txt_header_right">
+            Đăng
+            ký
+        </a>
+    </div>
+    <div class="text_1_header">
+        <a href="javascript:;" class="txt_link_hasaki txt_header_right" rel="nofollow">
+            Tài khoản <span class="icon_carret_down"></span>
+        </a>
+    </div>
+    <div class="sub_login">
+        <div class="main_content_sub_login">
+            <span class="arrow_sub_login"><span class="icon_carret_down"></span></span>
+            <div class="block_login_fb">
+                <div class="space_bottom_5"></div>
+            </div>
+            <div class="block_more_login">
+                <div class="space_bottom_10 text-center"></div>
+                @Html.ActionLink("Đăng nhập", "Login", "LoginResgis", null, new { @id = "hskLoginButton", @class = "btn btn_site_1 popup-login", @rel = "nofollow" })
+                Bạn chưa có tài khoản? @Html.ActionLink("Đăng ký ngay", "Regis", "LoginResgis", null, new { @class = "txt_color_1 text-uppercase popup-register", @rel = "nofollow" })
+            </div>
+        </div>
+    </div>
+}

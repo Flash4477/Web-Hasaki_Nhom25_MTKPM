@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "SetPass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("SetPass", "LoginResgis"))
+{
+    <div id="lg_login">
+        <div class="sub_login">
+            <div class="main_content_sub_login">
+                <h2 style="text-align: center">NHẬP MẬT KHẨU MỚI</h2>
+                <h2 style="color: red;">@ViewBag.ThongBao</h2>
+                <div class="block_more_login">
+                    <form id="form-head-login" action="https://hasaki.vn/login" method="post" novalidate="novalidate">
+                        <input name="form_key" type="hidden" value="9lB2QzSyHmzVefcW">
+                        <div class="showMessageError"></div>
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            <div class="relative">
+                                <label for="matkhau1">Mật khẩu:</label>
+                                @Html.Password("MatKhau1", null, new
+                                {
+                                    @class = "form-control",
+                                    @id =
+                               "matkhau1",
+                                    required = "required"
+                                })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="relative">
+                                <label for="matkhau2">Nhập lại mật khẩu:</label>
+                                @Html.Password("MatKhau2", null, new
+                                {
+                                    @class = "form-control",
+                                    @id =
+                               "matkhau2",
+                                    required = "required"
+                                })
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn_site_1">Đặt lại mật khẩu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

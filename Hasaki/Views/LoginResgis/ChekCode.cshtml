@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ChekCode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ChekCode", "LoginResgis"))
+{
+    <div id="lg_login">
+        <div class="sub_login">
+            <div class="main_content_sub_login">
+                <h3 style="text-align: center; ">Kiểm tra mã xác thực vừa được gửi trong mail của bạn. Nếu chưa nhận được xin đợi vài phút </h3>
+                <h2 style="color: red;">@ViewBag.ThongBao</h2>
+                <div class="block_more_login">
+                    <form id="form-head-login" action="https://hasaki.vn/login" method="post" novalidate="novalidate">
+                        <input name="form_key" type="hidden" value="9lB2QzSyHmzVefcW">
+                        <div class="showMessageError"></div>
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            <div class="relative">
+                                <label for="code">Verify Code:</label>
+                                @Html.TextBox("Code", null, new
+                                {
+                                    @class = "form-control",
+                                    @id =
+                               "code",
+                                    required = "required"
+                                })
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn_site_1">Kiểm tra mã</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

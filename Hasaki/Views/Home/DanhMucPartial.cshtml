@@ -1,0 +1,17 @@
+﻿@using Hasaki.Models
+@model IEnumerable<DanhMucSanPham>
+<link href="~/Content/hasaki-v4-header-footer-0.0.100.min.css" rel="stylesheet" />
+<div id="sub_menu_web">
+    <div class="col_menu_cap1">
+        @foreach (var danhmuc in Model)
+        {
+        <div class="sub_item_menu">
+            <a class="parent_menu" href="@Url.Action("SPTheoDanhMuc", "Home", new { id=danhmuc.DanhMucSanPhamID })">
+                <strong>@danhmuc.TenDanhMuc</strong>
+            </a>
+        </div>  
+        }
+    </div>
+</div>
+
+

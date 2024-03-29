@@ -1,0 +1,202 @@
+﻿@model Hasaki.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    /* Container styling */
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Heading styling */
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    /* Horizontal list styling */
+    .dl-horizontal dt {
+        float: left;
+        width: 120px;
+        clear: left;
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 140px;
+        margin-bottom: 10px;
+    }
+
+    /* Link styling */
+    a {
+        color: #337ab7;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: #23527c;
+            text-decoration: underline;
+        }
+
+    /* Button styling */
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .btn-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+        .btn-default:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+</style>
+
+<h2>Details</h2>
+
+<div>
+    <h4>SanPham</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.HinhAnh)" alt="Product Image" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DungTich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DungTich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThuongHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThuongHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.XuatXu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.XuatXu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDaPhuHop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiDaPhuHop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoPH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoPH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CongDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CongDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhPhanChinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhPhanChinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CachSuDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CachSuDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuuY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuuY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThuongHieu1.TenThuongHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThuongHieu1.TenThuongHieu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SanPhamID }) |
+</p>

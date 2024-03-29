@@ -1,0 +1,42 @@
+﻿@using Hasaki.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="box_daxem" class="ProductGrid__grid width_common box_bg_white">
+    <h2 class="text-uppercase txt_18 width_common" style="margin-bottom:10px">
+        Hàng mới về
+    </h2>
+    <div class="row space_bottom_20 items_v4">
+        @foreach (var product in Model)
+        {
+            <div class="item_goiy col-lg-2 col-md-3 col-sm-4">
+                <div class="item_sp_hasaki width_common relative">
+                    <a href="@Url.Action("ChiTietSP", "Home", new {id = product.SanPhamID})" class="v3_thumb_common_sp relative">
+                        <img class="img_thumb lazy" src="@product.HinhAnh">
+
+
+                        <span class="discount_percent3_deal">29%</span>
+                    </a>
+                    <a href="@Url.Action("ChiTietSP", "Home", new {id = product.SanPhamID})" class="block_info_item_sp width_common card-body" id="654e811a0a761" data-product="12684" data-id="204900013" data-name="Kem Chống Nắng La Roche-Posay Kiểm Soát Dầu SPF50+ 50ml" data-category-name="Chăm Sóc Da Mặt / Chống Nắng Da Mặt" data-price="380000" data-variant="50ml" data-brand="La Roche-Posay">
+                        <div class="width_common block_price space_bottom_3">
+                            <strong class="item_giamoi txt_16">@product.Gia ₫</strong>
+
+                            <span class="item_giacu txt_12 right">535.000 ₫</span>
+                        </div>
+                        <div class="width_common txt_color_1 space_bottom_3">
+                            <strong>@product.ThuongHieu</strong>
+                        </div>
+                        <h3 class="width_common name_sp space_bottom_5">
+                            <div class="vn_names">@product.TenSanPham</div>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="text-center width_common">
+        <a href="" class="btn btn_view_more_dv view_more_goiy">Xem thêm</a>
+    </div>
+</div>
+

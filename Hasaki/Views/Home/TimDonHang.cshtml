@@ -1,0 +1,81 @@
+﻿@using Hasaki.Models
+@model KhachHang
+@{
+    ViewBag.Title = "TimDonHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .invoice-section {
+        background: #eee;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    .customer-info, .order-details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .order-table {
+        max-height: 400px;
+        overflow-y: auto;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .order-table th, .order-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .order-table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+<div class="invoice-section">
+    <div class="customer-info">
+        <h2>Thông tin người đặt</h2>
+        <p>Khách hàng: <strong>@Model.TenKhachHang</strong></p>
+        <p>Số điện thoại: <strong>@Model.SoDienThoai</strong></p>
+        <p>Email: <strong>@Model.Email</strong></p>
+        <p>Phương thức thanh toán: <strong>@ViewBag.PTThanhToan</strong></p>
+        <p>Trạng thái đơn hàng: <strong>@ViewBag.TrangThai</strong></p>
+    </div>
+
+    <div class="invoice-section">
+        <h2 style="text-align:center">Sản phẩm</h2>
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình ảnh</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var sp in ViewBag.DonHang)
+                {
+                    <tr>
+                        <td>@sp.TenSP</td>
+                        <td><img src="@sp.HinhAnh" alt="Product Image" style="width:50px;height:auto;"></td>
+                        <td>@String.Format("{0:0,0}", sp.Gia) ₫</td>
+                        <td>@sp.SoLuong</td>
+                        <td>@String.Format("{0:0,0}", sp.TienHang()) ₫</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

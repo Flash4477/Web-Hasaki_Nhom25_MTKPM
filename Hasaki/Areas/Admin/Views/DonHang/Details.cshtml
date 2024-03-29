@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Hasaki.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<h4>ChiTietDonHang</h4>
+@foreach (var item in Model)
+{
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Số lượng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.SoLuong)
+            </dd>
+
+            <dt>
+                Thanh toán
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.DonHang.ThanhToan)
+            </dd>
+
+            <dt>
+                Tên sản phẩm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.SanPham.TenSanPham)
+            </dd>
+
+        </dl>
+    </div>
+}

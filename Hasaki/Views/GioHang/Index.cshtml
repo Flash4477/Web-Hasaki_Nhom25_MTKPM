@@ -1,0 +1,142 @@
+﻿@using Hasaki.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<div id="v3_wrapper_container" class="width_common" style="">
+    <div id="cart_page" class="container">
+        <form action="" method="post" id="form_cart">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title_donhang">
+                        Giỏ hàng(<span class="txt_999">@ViewBag.TongSL sản phẩm</span>)
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9">
+                    <div class="block_donhang_cart space_bottom_20 width_common">
+                        <table cellpadding="0" cellspacing="0" border="0" class="tb_giohang width_common">
+                            <tbody>
+                                <tr class="t_head_tb">
+                                    <td class="w_sp">Sản phẩm </td>
+                                    <td class="w_giatien">Giá tiền</td>
+                                    <td class="w_soluong">Số lượng</td>
+                                    <td class="w_thanhtien">Thành tiền</td>
+                                </tr>
+                                @foreach (var sp in Model)
+                                {
+                                    <tr class="item-info item-row">
+                                        <td class="w_sp">
+                                            <a class="thumb_donhang" href="" title="@sp.TenSP">
+                                                <img src="@sp.HinhAnh" class="loading" data-was-processed="true">
+                                            </a>
+                                            <div class="info_sp_donhang">
+                                                <a href="@Url.Action("ChiTietSP","Home", new {id = sp.SanPhamID})" class="product space_bottom_5 text-uppercase">
+                                                    <strong>@sp.ThuongHieu</strong>
+                                                </a>
+                                                <div class="title_sanpham_donhang">
+                                                    <a href="@Url.Action("ChiTietSP","Home", new {id = sp.SanPhamID})">@sp.TenSP</a>
+                                                </div>
+                                                <a href="" class="item_sub_sp _removeItemCart" data-qty="1" data-variant="298g" data-sku="422210803" data-id="106207" data-page="cart">
+                                                    @Html.ActionLink("Xóa", "XoaSP", "GioHang", new { id = sp.SanPhamID }, null)
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="col text-right">
+                                            <b>@String.Format("{0:0,0}", sp.Gia) ₫</b>
+                                            <div class="giacu">@String.Format("{0:0,0}", sp.Gia) ₫</div>
+                                        </td>
+
+                                        <td class="col qty text-right">
+                                            <div class="field qty space_bottom_5">
+                                                <div class="control qty wrap_qty">
+                                                    <input type="number" value="@sp.SoLuong" min="1" name="Quantity" class="quantityInput" data-productid="@sp.SanPhamID" />
+                                                </div>
+                                                <a href="javascript:void(0);" onclick="updateQuantity(@sp.SanPhamID)" class="btn btn-primary">Cập nhật</a>
+                                                <input type="hidden" class="hiddenQuantity" name="HiddenQuantity" data-productid="@sp.SanPhamID" value="@sp.SoLuong" />
+                                            </div>
+                                            <div class="txt_color_2 txt_12"></div>
+                                        </td>
+
+                                        <td class="col subtotal text-right">
+                                            <b class="price priceSubtotal">
+                                                @String.Format("{0:0,0}", sp.TienHang()) ₫
+                                            </b>
+                                        </td>
+                                    </tr>
+                                }
+                            <script>
+                                function updateQuantity(productID) {
+                                    var quantityValue = document.querySelector('.quantityInput[data-productid="' + productID + '"]').value;
+                                    if (quantityValue < 1) {
+                                        alert("Số lượng không được bé hơn 1");
+                                        return;
+                                    }
+                                    document.querySelector('.hiddenQuantity[data-productid="' + productID + '"]').value = quantityValue;
+                                    var url = "@Url.Action("CapNhatSL", "GioHang")" + "?id=" + productID + "&Quantity=" + quantityValue;
+                                    window.location.href = url;
+                                }
+                            </script>
+                                <tr>
+                                    <td colspan="2" class="relative txt_continue_buying">
+                                        <a href="/" class="txt_color_1 "><i class="fa fa-caret-left"></i> Tiếp tục mua hàng</a>
+                                    </td>
+                                    <td colspan="2">
+                                        <div class="block_thanhtien text-right">
+                                            <div class="text-right space_bottom_5">
+                                                Tạm tính:  &nbsp;  &nbsp;   <b class="txt_giatien txt_color_2">@String.Format("{0:0,0}",ViewBag.TongTien) ₫</b>
+                                            </div>
+                                            <div class="text-right space_bottom_5 txt_999">(Đã bao gồm VAT)</div>
+                                            <div class="text-right">
+                                                <a href="@Url.Action("DatHang","GioHang")" class="btn btn_site_2 placeAnOrder" >Tiến hành đặt hàng</a>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div id="box_hoadon" class="item_box_col_right space_bottom_20">
+                        <div class="title_common_site">
+                            Hóa đơn của bạn
+                        </div>
+                        <div class="content_common_site">
+                            <div class="block_thanhtien">
+                                <div class="space_bottom_5">
+                                    Tạm tính:<b class="pull-right">
+                                        @String.Format("{0:0,0}",@ViewBag.TongTien) ₫
+                                    </b>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="space_bottom_5">
+                                    Giảm giá:
+                                    <b class="pull-right">
+                                        -0 ₫
+                                    </b>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="width_common space_bottom_5" style="border-top:1px solid #e5e5e5;padding-top: 11px">
+                                    Tổng cộng:<b class="txt_giatien txt_color_2 pull-right">
+                                        @String.Format("{0:0,0}",@ViewBag.TongTien) ₫
+                                    </b>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class=" space_bottom_5 txt_999">(Đã bao gồm VAT)</div>
+                                <div class="text-center">
+                                    <a href="@Url.Action("DatHang","GioHang")" class="btn btn_site_2 placeAnOrder">Tiến hành đặt hàng</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

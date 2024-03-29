@@ -1,0 +1,108 @@
+﻿@using Hasaki.Models
+@model SanPham
+@{
+    ViewBag.Title = "ChiTietSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="detail_page" class="container">
+    <div class="width_common block_detail_top">
+        <div id="col_right">
+
+        </div>
+        <div id="col_left">
+          <div id="head_detail">
+            <div class="product media">
+                <div class="block_big_thumb">
+                    <div class="relative">
+                        <div style="height:386px;width:386px;" class="zoomWrapper">
+                            <div style="height:385px;width:329.837px;" class="zoomWrapper"><img id="zoom_01" src="@Model.HinhAnh" style="position: absolute; width: 385px; height: 385px;" class="loading" data-was-processed="true"></div>
+                        </div>
+                    </div>
+                    <span class="icon_combo hidden"></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="product-info-main">
+                <div class="product-info-price">
+                    <div class="product_name">
+                        <a href="https://hotro.hasaki.vn/van-chuyen-2h.html" class="txt_color_1" target="_blank"><img data-toggle="tooltip" data-placement="top" title="" src="../icon/icon_nowfree.png" class="icon_nowfree loading" style="margin-top: -4px" data-was-processed="true" data-original-title=""></a>
+                        <a class="title-brand txt_color_1" href="https://hasaki.vn/thuong-hieu/dove.html"></a>
+                    </div>
+                    <div class="page-title-wrapper product">
+                        <div class="page-title name_detail">
+                            <h1><span itemprop="name" data-ui-id="page-title-wrapper" class="product__title base">@Model.TenSanPham</span></h1>
+                        </div>
+                    </div>
+                    <div class="product-brand">
+                        <div class="product-announce" style="margin-bottom: 5px;">
+                            <a class="title-genuine" href="javascript:void(0);" style="background-color: #e5fbf1; border: thin solid #b1ead0; color: #306e51; font-size: 11px; border-radius: 4px; padding: 3px 5px;">
+                                Số công bố với Bộ Y Tế : 188622/22/CBMP-QLD
+                            </a>
+                        </div>
+                        <div class="block_start start_small">
+                            <div class="number_start" style="width:98%;"></div>
+                            <div class="start_background"></div>
+                        </div>
+                        <span class="item-sku txt_color_1">Mã sản phẩm: @Model.SanPhamID</span>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="box_price">
+                        <span class="txt_price" id="product-final_price">
+                            @Model.Gia ₫
+                        </span>
+                        <span class="price-note">(Đã bao gồm VAT)</span>
+                        <div class="hasaki-price-info">
+                            <p id="info_market" class="">
+                                Giá thị trường:
+                                <span id="market_price">@Model.Gia ₫</span> - Tiết kiệm:
+                                <span id="save_money">50.000 ₫</span>(<span id="save_money_percent" class="txt_color_2">-25%</span>)
+                            </p>
+                        </div>
+                    </div>
+                    <span class="shipping-note"></span>
+                    <div class="clearfix"></div>
+                    <div class="block_commbodetail" style="display: none;">
+                        <div id="detail_combo_text" class="txt_combo"></div>
+                    </div>
+                </div>
+                <div class="product-add-form">
+                    <form action="@Url.Action("ThemVaoGioHang","GioHang", new {id = Model.SanPhamID})" method="post" id="product_addtocart_form" novalidate="novalidate">
+                        <div class="product-options-bottom">
+                            <div class="box-tocart">
+                                <div class="fieldset">
+                                    <div class="field qty">
+                                        <div class="control">
+                                            <span class="txt_soluong">Số lượng: </span>
+                                            <div class="wrap_qty">
+                                                <input type="number" value="1" min="1" name="Quantity" class="quantityInput" data-productid="@Model.SanPhamID" />
+                                            </div>
+                                            <span id="stockMin" class="txt_color_2 txt_12"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="quick_ship">
+                                        <img class="image_quick_ship loading" src="https://hasaki.vn/icon/icon_nowfree.png" data-was-processed="true"><b>Giao Nhanh Miễn Phí 2H tại 139 Chi Nhánh:</b><br>
+                                        Bạn muốn nhận hàng trước <span style="color: #ff6600;">10h</span> ngày mai. Đặt hàng trước <span style="color: #ff6600;">24h</span> và chọn giao hàng <span style="color: #ff6600;">2H</span> ở bước thanh toán.                                    <a href="https://hotro.hasaki.vn/van-chuyen-2h.html" class="txt_color_1" target="_blank">Xem chi tiết</a>
+                                    </div>
+                                    <div class="actions">
+                                        <div>
+                                            <button class="btn btn_site_3 _btnAddToCart" id="product-addtocart-button" title="Thêm vào giỏ hàng">
+                                                <span>Giỏ hàng</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
