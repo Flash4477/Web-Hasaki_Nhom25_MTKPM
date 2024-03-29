@@ -51,6 +51,8 @@ namespace Hasaki.Controllers
         {
             return View();
         }
+
+        //hashpassword staregy designpattern
         [HttpPost]
         public ActionResult Login(KhachHang kh)
         {
@@ -63,6 +65,7 @@ namespace Hasaki.Controllers
                     ModelState.AddModelError(string.Empty, "Mật khẩu không được để trống");
                 if (ModelState.IsValid)
                 {
+                  //hashpassword staregy designpattern
                     string hashedPassword = _passwordStrategy.HashPassword(kh.MatKhau);
                     var khach = db.KhachHangs.FirstOrDefault(k => k.Email == kh.Email && k.MatKhau.ToLower() == hashedPassword);
                     if (khach != null)
@@ -114,6 +117,8 @@ namespace Hasaki.Controllers
         {
             return View();
         }
+
+        //decorator 
         [HttpPost]
         public ActionResult Regis(string email, string tenkhachhang, string matkhau1, string matkhau2)
         {
